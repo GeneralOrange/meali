@@ -1,11 +1,13 @@
 import React from "react";
-import ListItem from '../components/ListItem'
+import { View, Text } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
-const Lists = (props) => {
+const SubItems = (props) => {
 
     const renderItem = ({ item }) => (
-        <ListItem item={item} navigation={props.navigation} updateSubItems={props.updateSubItems}/>
+        <View>
+            <Text>{ item.title }</Text>
+        </View>
       );
 
     return (
@@ -19,4 +21,4 @@ const Lists = (props) => {
     )
 }
 
-export default Lists;
+export default SubItems;

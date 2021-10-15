@@ -7,9 +7,14 @@ const ListItem = (props) => {
 
     return (
         <>
-            <TouchableOpacity onPress={()=> props.navigation.navigate('listDetail', { title: props.title })}>
+            <TouchableOpacity
+                onPress={
+                    () => props.navigation.navigate('listDetail', { 
+                        item: props.item,
+                        updateSubItems: props.updateSubItems
+                    })}>
                 <View style={ ListItemStyles.wrapper }>
-                    <Text style={ ListItemStyles.text }>{ props.title }</Text>
+                    <Text style={ ListItemStyles.text }>{ props.item.title }</Text>
                 </View>
             </TouchableOpacity>
         </>
