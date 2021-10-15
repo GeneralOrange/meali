@@ -1,23 +1,35 @@
 import { StyleSheet } from 'react-native'
 
 export const createNewListStyles = StyleSheet.create({
-    button: {
-        paddingVertical: 10,
-        paddingHorizontal: 40,
-        backgroundColor: '#F07F19',
-        borderRadius: 10,
+    wrapper: {
+        padding: 10,
+        width: '100%',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        justifyContent: 'center'
+        flexDirection: 'row'
+    },
+    button: {
+        height: 50,
+        width: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F07F19',
+        borderRadius: 100
+        
     },
     text: {
         textAlign: 'center',
         color: '#FFF',
-        fontSize: 16,
+        fontSize: 40,
         fontWeight: 'bold'
     },
-    icon: {
-        fontSize: 40,
-        fontWeight: 'bold',
-        color: '#FFF'
+    input: {
+        borderColor: '#F07F19',
+        borderWidth: 2,
+        borderRadius: 10,
+        backgroundColor: '#fafafa',
+        width: 250,
+        height: 50,
+        fontSize: 25
     }
 });
