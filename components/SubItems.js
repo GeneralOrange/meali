@@ -1,13 +1,11 @@
 import React from "react";
-import { View, Text } from "react-native";
+import SubItem from "./SubItem";
 import { FlatList } from "react-native-gesture-handler";
 
 const SubItems = (props) => {
 
     const renderItem = ({ item }) => (
-        <View>
-            <Text>{ item.title }</Text>
-        </View>
+        <SubItem item={item}/>
       );
 
     return (

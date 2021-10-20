@@ -13,6 +13,10 @@ const Home = ({ navigation }) => {
                 {
                     id: 'testsub',
                     title: 'testsub'
+                },
+                {
+                    id: 'das',
+                    title: 'das'
                 }
             ]
         },
@@ -74,7 +78,7 @@ const Home = ({ navigation }) => {
             {
                 lists.length < 1 && <Text style={globalStyles.titleText}>Er is nog geen lijst aangemaakt</Text>                
             }
-            <Lists data={lists} navigation={navigation} updateSubItems={updateSubItems} />
+            <Lists data={lists} navigation={navigation}/>
             <CreateNewList navigation={navigation} updateLists={updateLists} lists={lists}/>
         </View>
     )

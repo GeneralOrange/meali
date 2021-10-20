@@ -35,7 +35,7 @@ const Navigator = () => {
                     <Stack.Screen
                         name="listDetail"
                         component={ listDetail }
-                        options={({ route }) => ({ title: route.params.title })}
+                        options={({ route }) => ({ title: route.params.item.title })}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

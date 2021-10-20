@@ -1,17 +1,29 @@
 import React, { useState } from 'react'
 import { TextInput, View, Text, Button } from 'react-native'
 import SubItems from '../components/SubItems'
+import CreateNewSubItem from '../components/createNewSubItem'
 import { globalStyles } from '../styles/global'
 
 const listDetail = ({ route }) => {
-    const [input, setInput] = useState('');
+    const [subItems, setSubItems] = useState(route.params.item.subItems);
+
+    const updateSubItems = (newSubItem) => {
+        let newSubItems = [];
+        newSubItems.push({
+            id: newSubItem,
+            title: newSubItem
+        });
+        
+        setSubItems([
+            ...subItems,
+            ...newSubItems
+        ]);
+    }
 
     return (
         <View style={globalStyles.container}>
-            <Text>Dit is de {route.params.item.title} screen</Text>
-            <SubItems data={route.params.item }/>
-            {/* <TextInput onChangeText={text => setInput(text)} value={input}/>
-            <Button onPress={route.params.updateSubItems(route.params.item, input)} title='Toevoegen'/> */}
+            <SubItems data={subItems }/>
+            <CreateNewSubItem subItems={subItems} updateSubItems={updateSubItems}/>
         </View>
     )
 }
