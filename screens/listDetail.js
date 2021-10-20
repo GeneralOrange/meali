@@ -5,25 +5,13 @@ import CreateNewSubItem from '../components/createNewSubItem'
 import { globalStyles } from '../styles/global'
 
 const listDetail = ({ route }) => {
-    const [subItems, setSubItems] = useState(route.params.item.subItems);
-
-    const updateSubItems = (newSubItem) => {
-        let newSubItems = [];
-        newSubItems.push({
-            id: newSubItem,
-            title: newSubItem
-        });
-        
-        setSubItems([
-            ...subItems,
-            ...newSubItems
-        ]);
-    }
-
+    const parentItem = route.params.item;
+    const subItems = route.params.item.subItems;
+    
     return (
         <View style={globalStyles.container}>
             <SubItems data={subItems }/>
-            <CreateNewSubItem subItems={subItems} updateSubItems={updateSubItems}/>
+            <CreateNewSubItem subItems={subItems} parentItem={parentItem} updateSubItems={route.params.updateSubItems}/>
         </View>
     )
 }

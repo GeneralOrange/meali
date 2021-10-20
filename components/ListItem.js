@@ -10,10 +10,12 @@ const ListItem = (props) => {
             <TouchableOpacity
                 onPress={
                     () => props.navigation.navigate('listDetail', { 
-                        item: props.item
+                        item: props.item,
+                        updateSubItems: props.updateSubItems
                     })}>
                 <View style={ ListItemStyles.wrapper }>
                     <Text style={ ListItemStyles.text }>{ props.item.title }</Text>
+                    <Text>{ props.item.subItems.length }</Text>
                 </View>
             </TouchableOpacity>
         </>

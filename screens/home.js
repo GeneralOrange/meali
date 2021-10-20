@@ -56,19 +56,21 @@ const Home = ({ navigation }) => {
             subItemsCopy = list.subItems
         }
 
-        listCopyWithNewSub = listCopyWithNewSub.filter(item => item !== list);
+        listCopyWithNewSub = lists.filter(item => item.id !== list.id);
 
         listCopyWithNewSub.push({
-            id: list,
-            title: list,
+            id: list.title,
+            title: list.title,
             subItems: [
                 ...subItemsCopy,
-                [newSubItem]
+                {
+                    id: newSubItem,
+                    title: newSubItem
+                }
             ]
         })
 
         setLists([
-            ...lists,
             ...listCopyWithNewSub
         ])
     }
@@ -78,7 +80,7 @@ const Home = ({ navigation }) => {
             {
                 lists.length < 1 && <Text style={globalStyles.titleText}>Er is nog geen lijst aangemaakt</Text>                
             }
-            <Lists data={lists} navigation={navigation}/>
+            <Lists data={lists} navigation={navigation} updateSubItems={updateSubItems}/>
             <CreateNewList navigation={navigation} updateLists={updateLists} lists={lists}/>
         </View>
     )

@@ -5,7 +5,7 @@ import { FlatList } from "react-native-gesture-handler";
 const Lists = (props) => {
 
     const renderItem = ({ item }) => (
-        <ListItem item={item} navigation={props.navigation}/>
+        <ListItem item={item} navigation={props.navigation} updateSubItems={props.updateSubItems}/>
       );
 
     return (
