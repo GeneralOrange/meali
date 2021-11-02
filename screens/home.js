@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text } from 'react-native'
 import CreateNewList from '../components/createNewList'
 import Lists from '../components/Lists'
 import { globalStyles } from '../styles/global'
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation, route }) => {
     const DATA = [
         {
             id: 'test',
@@ -34,6 +34,30 @@ const Home = ({ navigation }) => {
 
     const [lists, setLists] = useState(DATA);
 
+    useEffect(() => {
+        if(route.params && route.params.item){
+            let updatedList = route.params.item;
+
+            //This check needs to be different because we won't find the correct object if the subItems have been changed.
+            //Because it won't be the same obviously
+            //let updatedListPosition = parseInt(lists.indexOf(updatedList));
+            //let listCopy = lists;
+
+            // if(updatedListPosition !== -1){
+            //     listCopy.splice(updatedListPosition, 1, updatedList);
+            //     setLists(listCopy);
+            // }
+            //filter lists so old one gets deleted
+            setLists(lists.filter(list => list.id !== updatedList.id));
+
+            //add new updated list
+            setLists((prev) => [
+                ...prev,
+                updatedList
+            ]);
+        }
+    },[route.params]);
+
     const updateLists = (newTitle) => {
         let newLists = [];
         newLists.push({
@@ -48,39 +72,14 @@ const Home = ({ navigation }) => {
         ]);
     }
 
-    const updateSubItems = (list, newSubItem) => {
-        let listCopyWithNewSub = [];
-        let subItemsCopy = [];
-
-        if(list.subItems && list.subItems.length >= 1){
-            subItemsCopy = list.subItems
-        }
-
-        listCopyWithNewSub = lists.filter(item => item.id !== list.id);
-
-        listCopyWithNewSub.push({
-            id: list.title,
-            title: list.title,
-            subItems: [
-                ...subItemsCopy,
-                {
-                    id: newSubItem,
-                    title: newSubItem
-                }
-            ]
-        })
-
-        setLists([
-            ...listCopyWithNewSub
-        ])
-    }
+    //console.log(route.params);
     
     return (
         <View style={globalStyles.container}>
             {
                 lists.length < 1 && <Text style={globalStyles.titleText}>Er is nog geen lijst aangemaakt</Text>                
             }
-            <Lists data={lists} navigation={navigation} updateSubItems={updateSubItems}/>
+            <Lists data={lists} navigation={navigation}/>
             <CreateNewList navigation={navigation} updateLists={updateLists} lists={lists}/>
         </View>
     )

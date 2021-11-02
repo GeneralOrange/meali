@@ -11,7 +11,6 @@ const ListItem = (props) => {
                 onPress={
                     () => props.navigation.navigate('listDetail', { 
                         item: props.item,
-                        updateSubItems: props.updateSubItems
                     })}>
                 <View style={ ListItemStyles.wrapper }>
                     <Text style={ ListItemStyles.text }>{ props.item.title }</Text>

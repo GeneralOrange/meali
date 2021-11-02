@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat'
@@ -35,7 +36,14 @@ const Navigator = () => {
                     <Stack.Screen
                         name="listDetail"
                         component={ listDetail }
-                        options={({ route }) => ({ title: route.params.item.title })}
+                        options={
+                            ({ route }) => (
+                                {
+                                    title: route.params.item.title
+                                }
+                            )
+                        }
+                        
                     />
                 </Stack.Navigator>
             </NavigationContainer>

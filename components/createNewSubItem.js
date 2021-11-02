@@ -20,7 +20,7 @@ const CreateNewSubItem = (props) => {
                     if(input == ''){
                         return;
                     }
-                    props.updateSubItems(props.parentItem, input)
+                    props.updateSubItems(input)
                     setInput('')
                 }}>
                 <Text style={createNewListStyles.text}>+</Text>
